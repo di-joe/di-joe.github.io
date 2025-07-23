@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Gemini User Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A single-page application with a fixed sidebar navigation for seamless scrolling between sections. This structure was chosen for its intuitive user flow, allowing users to easily see all available topics and jump to any section without losing context. Interactive "Show Example" toggles are included to make the learning process more engaging and practical than a static document, directly addressing the goal of creating an interactive and easily consumable experience. -->
+    <!-- Visualization & Content Choices: The source text is organized into thematic sections. Each section is a distinct content block, navigated via the sidebar. Goal: Inform/Engage. Method: Structured HTML with interactive toggles powered by JavaScript. Interaction: Clicking a navigation link smoothly scrolls to the section. Clicking "Show Example" reveals a hidden div with a mock response. Justification: This approach turns passive reading into active exploration, enhancing user understanding and retention. Library/Method: Vanilla JavaScript for interactions. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8;
+            color: #4A4A4A;
+        }
+        .nav-link.active {
+            background-color: #EAE6E1;
+            color: #2D2D2D;
+            font-weight: 600;
+        }
+        .content-section {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="flex min-h-screen">
+        <aside class="w-64 sticky top-0 h-screen bg-[#F7F3EE] p-6 hidden lg:block shadow-sm">
+            <h1 class="text-xl font-bold text-[#2D2D2D] mb-8">Gemini Guide</h1>
+            <nav id="desktop-nav">
+                <ul class="space-y-2">
+                    <li><a href="#welcome" class="nav-link block px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-[#EAE6E1]">Welcome</a></li>
+                    <li><a href="#conversation" class="nav-link block px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-[#EAE6E1]">Starting a Conversation</a></li>
+                    <li><a href="#questions" class="nav-link block px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-[#EAE6E1]">Asking Questions</a></li>
+                    <li><a href="#creative" class="nav-link block px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-[#EAE6E1]">Creative Writing</a></li>
+                    <li><a href="#coding" class="nav-link block px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-[#EAE6E1]">Coding Assistance</a></li>
+                    <li><a href="#editing" class="nav-link block px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-[#EAE6E1]">Editing & Refining</a></li>
+                    <li><a href="#canvas" class="nav-link block px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-[#EAE6E1]">Using the Canvas</a></li>
+                    <li><a href="#tips" class="nav-link block px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-[#EAE6E1]">Best Practices</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-10">
+            <div class="max-w-4xl mx-auto">
+                
+                <header class="lg:hidden mb-8">
+                     <select id="mobile-nav" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm">
+                        <option value="#welcome">Welcome</option>
+                        <option value="#conversation">Starting a Conversation</option>
+                        <option value="#questions">Asking Questions</option>
+                        <option value="#creative">Creative Writing</option>
+                        <option value="#coding">Coding Assistance</option>
+                        <option value="#editing">Editing & Refining</option>
+                        <option value="#canvas">Using the Canvas</option>
+                        <option value="#tips">Best Practices</option>
+                    </select>
+                </header>
+
+                <section id="welcome" class="content-section min-h-[60vh] flex items-center">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold text-[#2D2D2D] mb-4">Welcome to Gemini</h2>
+                        <p class="text-lg md:text-xl text-gray-600">This interactive guide will help you get started and make the most of your AI assistant. Learn how to ask questions, generate content, write code, and more. Use the navigation to explore different topics.</p>
+                    </div>
+                </section>
+
+                <section id="conversation" class="content-section py-12">
+                    <h2 class="text-3xl font-bold text-[#2D2D2D] mb-6">Starting a Conversation</h2>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <p class="mb-4">The simplest way to interact with Gemini is to type your request directly into the chatbox. You can ask questions, give commands, or provide prompts for Gemini to work with.</p>
+                        <div class="bg-[#F7F3EE] p-4 rounded-md">
+                            <p class="font-mono text-sm text-gray-700">"Write a short story about a talking cat."</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="questions" class="content-section py-12">
+                    <h2 class="text-3xl font-bold text-[#2D2D2D] mb-6">Asking Questions & Getting Information</h2>
+                    <div class="space-y-4">
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                            <h3 class="font-semibold text-lg mb-2 text-[#2D2D2D]">Direct Questions & Explanations</h3>
+                            <p class="mb-4">Ask factual questions or request explanations on complex topics. You can also ask for simplified versions or analogies.</p>
+                            <div class="bg-[#F7F3EE] p-4 rounded-md">
+                                <p class="font-mono text-sm text-gray-700">"Explain quantum physics in simple terms."</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                            <h3 class="font-semibold text-lg mb-2 text-[#2D2D2D]">Summaries</h3>
+                            <p>Provide text and ask Gemini to summarize it for you, extracting the key points.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="creative" class="content-section py-12">
+                    <h2 class="text-3xl font-bold text-[#2D2D2D] mb-6">Creative Writing & Brainstorming</h2>
+                     <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <p class="mb-4">Gemini can help you draft emails, stories, poems, and more. Specify the tone, length, and style you prefer for the best results.</p>
+                        <div class="bg-[#F7F3EE] p-4 rounded-md">
+                            <p class="font-mono text-sm text-gray-700 mb-2">"Draft a formal email to a client about a project delay."</p>
+                            <button class="interactive-toggle text-sm font-semibold text-[#BF9270] hover:text-[#A67B5B]" data-target="example-creative">Show Example ▼</button>
+                            <div id="example-creative" class="hidden mt-4 p-4 bg-gray-100 rounded-md border border-gray-200 text-sm">
+                                <p><strong>Subject: Update on Project [Project Name]</strong></p>
+                                <p>Dear [Client Name],</p>
+                                <p>I am writing to provide an update on the [Project Name]. We have encountered an unforeseen circumstance that will cause a slight delay in our original timeline...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="coding" class="content-section py-12">
+                    <h2 class="text-3xl font-bold text-[#2D2D2D] mb-6">Coding Assistance</h2>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <p class="mb-4">Describe the functionality you need, and Gemini can generate code snippets, explain code, help debug, or refactor existing code.</p>
+                        <div class="bg-[#F7F3EE] p-4 rounded-md">
+                            <p class="font-mono text-sm text-gray-700 mb-2">"Create a simple HTML page with a navigation bar and a hero section."</p>
+                             <button class="interactive-toggle text-sm font-semibold text-[#BF9270] hover:text-[#A67B5B]" data-target="example-code">Show Example ▼</button>
+                            <div id="example-code" class="hidden mt-4 p-4 bg-gray-800 text-white rounded-md border border-gray-600 text-xs font-mono">
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+  &lt;section class="hero"&gt;...&lt;/section&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="editing" class="content-section py-12">
+                    <h2 class="text-3xl font-bold text-[#2D2D2D] mb-6">Editing & Refining</h2>
+                     <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <p class="mb-4">If you want to change something in Gemini's response, simply tell it what you'd like to modify. The more specific you are, the better the result.</p>
+                        <div class="bg-[#F7F3EE] p-4 rounded-md">
+                            <p class="font-mono text-sm text-gray-700">"Make that story longer and add a plot twist."</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="canvas" class="content-section py-12">
+                    <h2 class="text-3xl font-bold text-[#2D2D2D] mb-6">Using the Immersive Canvas</h2>
+                     <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <p>When Gemini provides a longer response, like code or detailed text, it will often appear in the "Immersive Canvas" on the right side of your screen. This is a collaborative space where you can directly edit the content. For code, you can use the "Preview" button to see the live output.</p>
+                    </div>
+                </section>
+
+                <section id="tips" class="content-section py-12">
+                    <h2 class="text-3xl font-bold text-[#2D2D2D] mb-6">Tips for Best Results</h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                            <h3 class="font-semibold text-lg mb-2 text-[#2D2D2D]">Be Clear and Specific</h3>
+                            <p>The more precise your instructions, the better Gemini can understand and fulfill your request. Include details like length, tone, and format.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                            <h3 class="font-semibold text-lg mb-2 text-[#2D2D2D]">Break Down Complex Tasks</h3>
+                            <p>For very large or intricate requests, consider breaking them into smaller, more manageable steps for Gemini to handle.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                            <h3 class="font-semibold text-lg mb-2 text-[#2D2D2D]">Provide Context</h3>
+                            <p>If your request builds on previous interactions, remind Gemini of the context if necessary to ensure continuity.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                            <h3 class="font-semibold text-lg mb-2 text-[#2D2D2D]">Experiment!</h3>
+                            <p>Don't hesitate to try different types of prompts and see what Gemini can do. Exploration is key to understanding its full potential.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.content-section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileNav = document.getElementById('mobile-nav');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.4 
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                        mobileNav.value = `#${id}`;
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            mobileNav.addEventListener('change', function(e) {
+                window.location.hash = e.target.value;
+            });
+            
+            const interactiveToggles = document.querySelectorAll('.interactive-toggle');
+            interactiveToggles.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.dataset.target;
+                    const targetElement = document.getElementById(targetId);
+                    const isHidden = targetElement.classList.contains('hidden');
+                    
+                    if (isHidden) {
+                        targetElement.classList.remove('hidden');
+                        button.textContent = button.textContent.replace('▼', '▲');
+                    } else {
+                        targetElement.classList.add('hidden');
+                        button.textContent = button.textContent.replace('▲', '▼');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
